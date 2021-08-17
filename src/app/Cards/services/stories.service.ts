@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+import {environment} from '../../../environments/environment';
+// import {environment} from '../../../environments/environment.prod';
 import {Stories} from '../models/stories';
-
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,6 @@ export class StoriesService {
   ) { }
 
   getAllStories(): Observable<Stories[]> {
-    return this.http.get<Stories[]>('https://hacker-news.firebaseio.com/v0/topstories.json')
+    return this.http.get<Stories[]>(`${environment.apiUrl}/topstories.json`)
   }
 }
