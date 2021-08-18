@@ -1,7 +1,7 @@
 export class Story {
     title!: string
     url!: string
-    timestamp!: number
+    time!: number
     score!: number
     by!: number
 }
