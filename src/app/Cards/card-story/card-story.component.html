@@ -1,8 +1,26 @@
 <main *ngIf="users.length; else elseBlock">
-    <div *ngFor="let story of stories; let i = index">
-        <p>{{story.title}}, {{story.by}}, {{story.score}}</p>
-        <p>{{users[i].id}}: {{users[i].karma}}</p>
-    </div>
+    <article *ngFor="let story of stories; let i = index">
+        <div class="story-image">
+            <a [href]="story.url" target="_blank" rel="noopener noreferrer">
+                <img src="/assets/images/placeholder.jpg" alt="placeholder">
+            </a>
+            
+        </div>
+        <div class="content">
+            <h4>Author: <em>{{story.by}}</em></h4>
+            <h2>
+                <a [href]="story.url" target="_blank" rel="noopener noreferrer">{{story.title}}</a>
+            </h2>
+            
+            <p>
+                <span>Score: {{story.score}}</span>&nbsp;
+                <span>Karma: {{users[i].karma}}</span>&nbsp;
+                <span>{{story.time * 1000 | date:'dd/MM/yyyy'}}</span>
+            </p>
+        </div>
+    </article>
 </main>
 
-<ng-template #elseBlock>Loading...</ng-template>
+<ng-template #elseBlock>
+    <div class="loader">Loading...</div>
+</ng-template>
