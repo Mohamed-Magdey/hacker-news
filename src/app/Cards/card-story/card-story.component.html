@@ -1,1 +1,8 @@
-<main>card-story works!</main>
+<main *ngIf="users.length; else elseBlock">
+    <div *ngFor="let story of stories; let i = index">
+        <p>{{story.title}}, {{story.by}}, {{story.score}}</p>
+        <p>{{users[i].id}}: {{users[i].karma}}</p>
+    </div>
+</main>
+
+<ng-template #elseBlock>Loading...</ng-template>
